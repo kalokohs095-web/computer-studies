@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Contact Codeskul Computer Studies.">
+
+    <title>Contact Us | Codeskul Computer Studies</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* =========================
+       RESET
+    ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f7f9fc;
+            color: #222;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+       HEADER
+    ========================= */
+
+        .site-header {
+            width: 100%;
+            min-height: 70px;
+            padding: 12px 6%;
+            background: rgb(17, 17, 60);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.25s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: orangered;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+       MAIN
+    ========================= */
+
+        .page-container {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 50px 0;
+        }
+
+
+        /* =========================
+       HERO
+    ========================= */
+
+        .hero {
+            text-align: center;
+            padding: 35px 10px 55px;
+        }
+
+        .small-title {
+            color: #007bff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 3.3rem);
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .hero p:last-child {
+            max-width: 700px;
+            margin: auto;
+            color: #666;
+        }
+
+
+        /* =========================
+       CONTACT
+    ========================= */
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 25px;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .contact-info h2,
+        .contact-form h2 {
+            margin-bottom: 18px;
+            color: #007bff;
+        }
+
+        .contact-item {
+            margin-top: 20px;
+        }
+
+        .contact-item strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .contact-item p {
+            color: #666;
+        }
+
+
+        /* =========================
+       FORM
+    ========================= */
+
+        .contact-form label {
+            display: block;
+            margin: 15px 0 6px;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d5d9df;
+            border-radius: 8px;
+            font: inherit;
+            outline: none;
+            background: white;
+            transition: border-color 0.25s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #007bff;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .contact-form button {
+            margin-top: 18px;
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #007bff;
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .contact-form button:hover {
+            background: #005fc7;
+        }
+
+        .contact-form button:active {
+            transform: scale(0.98);
+        }
+
+
+        /* =========================
+       FOOTER
+    ========================= */
+
+        footer {
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 28px 5%;
+        }
+
+        #brainLink {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        #brainLink:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+       SOCIAL ICONS
+    ========================= */
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .social-icons a {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 20px;
+            transition: 0.25s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+
+        #face:hover {
+            background: #1877f2;
+        }
+
+        #what:hover {
+            background: #25d366;
+        }
+
+        #tik:hover {
+            background: #111;
+        }
+
+        #you:hover {
+            background: #ff0000;
+        }
+
+
+        /* =========================
+       FOOTER LINKS
+    ========================= */
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+       MOBILE
+    ========================= */
+
+        @media (max-width: 768px) {
+
+            .site-header {
+                padding: 12px 5%;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgb(17, 17, 60);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav a {
+                padding: 15px 5%;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .page-container {
+                width: 92%;
+                padding: 30px 0;
+            }
+
+            .hero {
+                padding: 25px 5px 35px;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 22px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 6px;
+            }
+        }
+
+
+
+        
+    </style>
+
+</head>
+
+<body><!-- =========================
+     HEADER
+========================= -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo">
+            Codeskul
+        </a>
+
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">
+            ☰
+        </button>
+
+        <nav id="mainNav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="contact.html" class="active">
+                Contact Us
+            </a>
+
+            <a href="privacy.html">
+                Privacy
+            </a>
+
+            <a href="terms.html">
+                Terms
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+     MAIN
+========================= -->
+
+    <main class="page-container">
+
+        <section class="hero">
+
+            <p class="small-title">
+                GET IN TOUCH
+            </p>
+
+            <h1>
+                Contact Us
+            </h1>
+
+            <p>
+                Have a question, suggestion, correction, or
+                feedback? We'd like to hear from you.
+            </p>
+
+        </section>
+
+
+        <section class="contact-layout">
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="contact-info">
+
+                <h2>
+                    Contact Codeskul
+                </h2>
+
+                <p>
+                    If you have feedback about our lessons,
+                    quizzes, website, or educational content,
+                    you can contact us using the form.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        📧 Email
+                    </strong>
+
+                    <p>
+                        saidukaloko072@gmail.com
+                    </p>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        📍 Location
+                    </strong>
+
+                    <p>
+                        Freetown, Sierra Leone
+                    </p>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        💡 Suggestions
+                    </strong>
+
+                    <p>
+                        We welcome suggestions that can help
+                        improve Codeskul for students.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+             WORKING FORMSUBMIT FORM
+        ========================= -->
+
+            <form action="https://formsubmit.co/saidukaloko072@gmail.com" method="POST" class="contact-form">
+
+                <!-- Email subject -->
+
+                <input type="hidden" name="_subject" value="New Message from Codeskul Website">
+
+
+                <!-- Email format -->
+
+                <input type="hidden" name="_template" value="table">
+
+
+                <!-- Redirect after successful submission -->
+
+                <input type="hidden" name="_next" value="https://YOUR-NETLIFY-SITE.netlify.app/thank-you.html">
+
+
+                <h2>
+                    Send Us a Message
+                </h2>
+
+
+                <label for="name">
+                    Name
+                </label>
+
+                <input type="text" id="name" name="name" placeholder="Enter your name" autocomplete="name" required>
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email"
+                    required>
+
+
+                <label for="message">
+                    Message
+                </label>
+
+                <textarea id="message" name="message" rows="6" placeholder="Write your message..." required></textarea>
+
+
+                <button type="submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Send Message
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer>
+
+        <a href="brain.html" id="brainLink">
+            The Brain Behind the Website
+        </a>
+
+        <p>
+            © <span id="year"></span>
+            Codeskul Computer Studies.
+            All rights reserved.
+        </p>
+
+
+        <!-- SOCIAL MEDIA -->
+
+        <div class="social-icons">
+
+            <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" id="face"
+                aria-label="Facebook">
+
+                <i class="fab fa-facebook-f"></i>
+
+            </a>
+
+
+            <a href="https://wa.me/yourNumber" target="_blank" rel="noopener noreferrer" id="what"
+                aria-label="WhatsApp">
+
+                <i class="fab fa-whatsapp"></i>
+
+            </a>
+
+
+            <a href="https://www.tiktok.com/@yourUsername" target="_blank" rel="noopener noreferrer" id="tik"
+                aria-label="TikTok">
+
+                <i class="fab fa-tiktok"></i>
+
+            </a>
+
+
+            <a href="https://youtube.com/@yourChannel" target="_blank" rel="noopener noreferrer" id="you"
+                aria-label="YouTube">
+
+                <i class="fab fa-youtube"></i>
+
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="privacy.html">
+                Privacy Policy
+            </a>
+
+            <span>|</span>
+
+            <a href="terms.html">
+                Terms & Conditions
+            </a>
+
+            <span>|</span>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <span>|</span>
+
+            <a href="contact.html">
+                Contact Us
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+     JAVASCRIPT
+========================= -->
+
+    <script>
+
+        /* =========================
+           MOBILE MENU
+        ========================= */
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const mainNav =
+            document.getElementById("mainNav");
+
+
+        if (menuBtn && mainNav) {
+
+            menuBtn.addEventListener("click", function () {
+
+                mainNav.classList.toggle("show");
+
+                if (mainNav.classList.contains("show")) {
+
+                    menuBtn.textContent = "✕";
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Close menu"
+                    );
+
+                } else {
+
+                    menuBtn.textContent = "☰";
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Open menu"
+                    );
+
+                }
+
+            });
+
+        }
+
+
+        /* =========================
+           COPYRIGHT YEAR
+        ========================= */
+
+        const year =
+            document.getElementById("year");
+
+        if (year) {
+
+            year.textContent =
+                new Date().getFullYear();
+
+        }
+
+
+        /*
+         * IMPORTANT:
+         *
+         * There is NO submit event handler here.
+         *
+         * We deliberately do NOT use:
+         *
+         * event.preventDefault();
+         *
+         * because FormSubmit needs the browser
+         * to submit the form normally.
+         */
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Computer Operations | CodeSkul</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+            transition: .3s;
+        }
+
+        .dark {
+            background: #121212;
+            color: white;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            width: 220px;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #0a66c2, #00c6ff);
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+            background: url(./Image/IMG_8730.jpeg) center/cover;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* NAVIGATION BUTTONS */
+        .topic-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 25px;
+            background: white;
+        }
+
+        .dark .topic-nav {
+            background: #1f1f1f;
+        }
+
+        .topic-btn {
+            border: none;
+            padding: 12px 18px;
+            border-radius: 30px;
+            background: #0a66c2;
+            color: white;
+            transition: .3s;
+            gap: 10px;
+        }
+
+        .topic-btn:hover {
+            background: #004f9f;
+        }
+
+        /* CONTENT */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .topic {
+            display: none;
+            animation: fade .5s;
+        }
+
+        .topic.active {
+            display: block;
+        }
+
+        .topic h2 {
+            color: #0a66c2;
+            margin-bottom: 20px;
+        }
+
+        .dark .topic h2 {
+            color: #4da3ff;
+        }
+
+        .topic img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .topic p,
+        .topic li {
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        ul,
+        ol {
+            padding-left: 25px;
+        }
+
+        .action-buttons {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-buttons button {
+            background: #0a66c2;
+            color: white;
+        }
+
+        .technology {
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            gap: 15;
+        }
+
+        .example {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .example img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .example h3 {
+            margin: 10px 0 5px;
+            color: #2c3e50;
+        }
+
+        .example p {
+            padding: 0 10px 15px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #0a66c2;
+            color: white;
+            margin-top: 50px;
+        }
+
+        #brainLink {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .question {
+            background: #ecf0f1;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 5px solid #1abc9c;
+            border-radius: 5px;
+            color: #000;
+        }
+
+        /* THEME BUTTON */
+        #themeToggle {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: white;
+        }
+
+
+        .feedback {
+            margin-top: 30px;
+            padding: 20px;
+            background: #eef5ff;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feedback input,
+        .feedback textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .feedback textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .feedback button {
+            background: #0a66c2;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .gen {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gen img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gen-content {
+            padding: 20px;
+            color: #000;
+        }
+
+        .gen h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .timeline1 {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .generation1 {
+            background: white;
+            border-left: 5px solid #007acc;
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 20px;
+            color: orangered;
+        }
+
+        .generation1:hover {
+            background: #e6f7ff;
+        }
+
+        .generation1 i {
+            margin-right: 8px;
+            color: #007acc;
+        }
+
+        .details1 {
+            display: none;
+            padding-top: 10px;
+            font-size: 14px;
+            color: #000000;
+            font-size: 20px;
+        }
+
+        .flow {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #0d47a1;
+            color: white;
+            border-radius: 10px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .box {
+            background: #0096C7;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 170px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cpu {
+            background: #023e8a;
+            width: 220px;
+        }
+
+        .arrow {
+            font-size: 30px;
+            color: #005f99;
+            font-weight: bold;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #005f99;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f8fc;
+        }
+
+        tr:hover {
+            background: #dff1ff;
+        }
+
+
+
+        /* MOBILE */
+        @media(max-width:768px) {
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .feedback input,
+            .feedback textarea {
+                width: 100%;
+            }
+
+            .topic-nav {
+                padding: 15px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .topic-btn {
+                font-size: 14px;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .search-box {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            input {
+                width: 100%;
+            }
+
+            table {
+                min-width: 600px;
+
+            }
+
+            th,
+            td {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CodeSkul</h1>
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="search" placeholder="Search lesson...">
+                <button onclick="goBack()">⬅ Back</button>
+                <button id="themeToggle">🌙</button>
+            </div>
+    </header>
+
+    <section class="hero">
+        <h2>Basic Computer Operations</h2>
+        <p>
+            Learn the foundation of computer studies designed for beginners,
+            NPSE, BECE and WASSCE students.
+        </p>
+    </section>
+
+    <!-- BUTTON NAVIGATION -->
+    <div class="topic-nav">
+        <button class="topic-btn" onclick="showTopic('impact')">Technology Impact</button>
+        <button class="topic-btn" onclick="showTopic('history')">History</button>
+        <button class="topic-btn" onclick="showTopic('computer')">What is Computer</button>
+        <button class="topic-btn" onclick="showTopic('classification')">Classification</button>
+        <button class="topic-btn" onclick="showTopic('uses')">Uses</button>
+    </div>
+
+    <div class="container">
+
+        <!-- IMPACT -->
+        <section id="impact" class="topic active">
+            <h2>How Technology Impacts Us Today</h2>
+            <img src="./Image/robots-warehouse.jpg" alt="">
+            <h3>What is Technology?</h3>
+            <p>
+                Technology is the intelligent application of scientific knowledge, tools, and innovations to solve
+                real-world problems,
+                improve human life, and enchance productivity. It shape how we learn, communicate, work, and interact in
+                the modern
+                digital world - from Al to smart devices.
+            </p>
+            <br>
+            <h4 style="text-align: center;">Example of Technology</h4>
+            <div class="technology">
+                <div class="example">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="Mobile Phone">
+                    <h3>Mobile Phone</h3>
+                    <p>Used for communication, internet browsing, and social media</p>
+                </div>
+
+                <div class="example">
+                    <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28" alt="Laptop">
+                    <h3>Computer / Laptop</h3>
+                    <p>Used for studying, work, research, entertainment</p>
+                </div>
+
+                <div class="example">
+                    <img src="https://images.unsplash.com/photo-15264014855004-2aa7b4a5c6f0" alt="Television">
+                    <h3>Television</h3>
+                    <p>Used for watching news, education programs, and entertainment.</p>
+                </div>
+
+                <div class="example">
+                    <img src="https://images.unsplash.com/photo-1581090700227-1e8c3f2a2a0c" alt="Internet">
+                    <h3>Internet</h3>
+                    <p>Provide global communication and access to information.</p>
+                </div>
+
+                <div class="example">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" alt="car">
+                    <h3>Vehicles</h3>
+                    <p>Used for transportation of people and goods</p>
+                </div>
+
+                <div class="example">
+                    <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c1f4e0" alt="Medical Technology">
+                    <h3>Medical Machines</h3>
+                    <p>Used in hospitals for diagnosing and treating diseases.</p>
+                </div>
+
+            </div>
+            <br>
+            <p>The impact of technology can be broadly categorized into two main areas:</p>
+            <ul>
+                <li>Positive / Good Impact of Technology</li>
+                <li>Negative / Bad Impact of Technology</li>
+            </ul>
+
+
+
+
+
+
+            <br>
+            <br>
+
+            <h3>Positives Impacts</h3>
+
+            <ul>
+                <li>Online learning platforms</li>
+                <li>Instant communication</li>
+                <li>Digital banking</li>
+                <li>Access to global information</li>
+            </ul>
+            <br>
+            <br>
+            <h3>Negative Impacts</h3>
+            <ul>
+                <li>Cybercrime</li>
+                <li>Addiction to devices</li>
+                <li>Reduced physical interaction</li>
+                <li>Privacy concerns</li>
+            </ul>
+            <br>
+            <p>Below are some important essay questions that will help you understand the meaning of technology, its
+                examples, and its good and bad impacts on our lives.</p>
+
+            <section>
+                <h2 style="text-align: center;">Essay Questions</h2>
+                <div class="question">
+                    1. Define technology and explain its importance in everyday life.
+                </div>
+
+                <div class="question">
+                    2. Describe five examples of technology and explain how each one is used
+                </div>
+
+                <div class="question">
+                    3. Discuss the good impacts of technology on education, communication, and healthcare.
+                </div>
+
+                <div class="question">
+                    4. Explain the bad impacts of technology on people and society today.
+                </div>
+            </section>
+
+
+            <div class="action-buttons">
+                <button onclick="alert('Quiz section below')">View Quiz</button>
+                <button onclick="alert('Tutorial videos coming soon')">View Tutorials</button>
+            </div>
+
+
+            <form action="https://formsubmit.co/saidukaloko072@gmail.com" method="POST" class="feedback">
+
+                <h3 style="color: black;">Leave Feedback</h3>
+
+                <input type="text" name="name" placeholder="Your Name" required>
+
+                <input type="email" name="email" placeholder="Your Email" required>
+
+                <textarea name="feedback" placeholder="Write your feedback..." required>
+              </textarea>
+
+                <button type="submit">Submit Feedback</button>
+
+                <input type="hidden" name="_subject" value="New CodeSkul Feedback">
+                <input type="hidden" name="_captcha" value="false">
+
+                <input type="hidden" name="_next" value="thankyou.html">
+
+            </form>
+
+        </section>
+
+        <!-- HISTORY -->
+        <section id="history" class="topic">
+            <h2>History of Computer</h2>
+            <img src="https://source.unsplash.com/1000x500/?old-computer">
+            <h3 style="text-align: center;">Origin of Computer</h3>
+            <p></p>
+
+            <p>
+                The computer originated from mankind's need to calculate and process information quickly and accurately.
+                The earliest know calculating device was the <strong>abacus</strong>, developed around
+                <strong>3000BC</strong> in ancient civilizations.
+            </p>
+            <p>
+                The word <strong>computer</strong> originally referred to a person who performs calculations. Later, it
+                became the name for electronic machines that carry out calculations and process data.
+            </p>
+            <br>
+            <p>
+                The modern computer developed through contributions from different inventors:
+            </p>
+
+            <ul>
+                <li><strong>Abacus - </strong>First counting device</li>
+                <li><strong>Blaise Pascal (1642) -</strong> Invented the Pascaline</li>
+                <li><strong>Gottfried Leibniz (1673) - </strong>Developed a mechanical calculator</li>
+                <li><strong>Charles Babbage - </strong>Designed the Analytical Engine (Father of Computer)</li>
+                <li><strong>Herman Hollerith (1890) - </strong>Developed punched card system</li>
+                <li><strong>ENIAC (1946) - </strong>First electronic general - purpose computer</li>
+            </ul>
+            <br>
+            <h2 style="text-align: center;">Generation of Computers</h2>
+
+            <div class="gen">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="First Generation">
+                <div class="gen-content">
+                    <h2>1. First Generation (1940-1956)</h2>
+                    <ul>
+                        <li>Used vacuum tubes</li>
+                        <li>Very large in size</li>
+                        <li>Consumed a lot of electricity</li>
+                        <li>Produced much heat</li>
+                        <li>Slow processing speed</li>
+                        <li>Used machines languages only</li>
+                        <li>Very expensive</li>
+                        <li style="font-style: italic;">Example: ENIAC, UNIVAC</li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="gen">
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22731d8f7a" alt="Second Generation">
+                <div class="gen-content">
+                    <h2>2. Second Generation (1956-1963)</h2>
+                    <ul>
+                        <li>Used transistors</li>
+                        <li>Smaller than first generation</li>
+                        <li>More reliable</li>
+                        <li>Faster processing speed</li>
+                        <li>Consumed less power</li>
+                        <li>Produced less heat</li>
+                        <li>Used assembly language</li>
+                        <li style="font-style: italic;">Example: IBM 1401, IBM 7090</li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+
+            <div class="gen">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3" alt="Third Generation">
+                <div class="gen-content">
+                    <h2>3. Third Generation (1964-1971)</h2>
+                    <ul>
+                        <li>Used integrated circuits (ICs)</li>
+                        <li>Smaller and cheaper</li>
+                        <li>Faster and more accurate</li>
+                        <li>More reliable</li>
+                        <li>Used operating</li>
+                        <li>Supported high-level programming languages</li>
+                        <li>Very expensive</li>
+                        <li style="font-style: italic;">Example: IBM System/360</li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+
+            <div class="gen">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Fourth Generation">
+                <div class="gen-content">
+                    <h2>4. Fourth Generation (1971-Present)</h2>
+                    <ul>
+                        <li>Used Microprocessors</li>
+                        <li>Very small in size</li>
+                        <li>Very fast processing</li>
+                        <li>Affordable</li>
+                        <li>Large memory storage</li>
+                        <li>User-friendly</li>
+                        <li>Supports networking and internet</li>
+                        <li style="font-style: italic;">Example: Destop computers, laptops</li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+
+            <div class="gen">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995" alt="Fifth Generation">
+                <div class="gen-content">
+                    <h2>5. Fifth Generation (Present and Future)</h2>
+                    <ul>
+                        <li>Based on Artificial intelligence (Al)</li>
+                        <li>Can learn and decisions</li>
+                        <li>Very high speed</li>
+                        <li>Advanced problem-solving ability</li>
+                        <li>Uses voice recognition</li>
+                        <li>Smart and intelligent systems</li>
+                        <li style="font-style: italic;">Example: Al robots, smarts assistants like computers using Al
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <br>
+            <p>Essay Questions on Origin of Computer and Computer Generation</p>
+
+            <section>
+                <h2 style="text-align: center;">Essay Questions</h2>
+                <div class="question">
+                    1. Explain the origin of the computer and mention the major inventors who contributed to its
+                    development.
+                </div>
+
+                <div class="question">
+                    2. Discuss the features of the first and second generations of computers.
+                </div>
+
+                <div class="question">
+                    3. Describe the features of the third and fourth generations of computers.
+                </div>
+
+                <div class="question">
+                    4. Explain the fifth generation of computers and how computers have improved from one generation to
+                    another.
+                </div>
+                <br>
+
+                <div class="action-buttons">
+                    <button onclick="alert('Quiz section below')">View Quiz</button>
+                    <button onclick="alert('Tutorial videos coming soon')">View Tutorials</button>
+                </div>
+
+
+                <form action="https://formsubmit.co/saidukaloko072@gmail.com" method="POST" class="feedback">
+
+                    <h3 style="color: black;">Leave Feedback</h3>
+
+                    <input type="text" name="name" placeholder="Your Name" required>
+
+                    <input type="email" name="email" placeholder="Your Email" required>
+
+                    <textarea name="feedback" placeholder="Write your feedback..." required>
+                          </textarea>
+
+                    <button type="submit">Submit Feedback</button>
+
+                    <input type="hidden" name="_subject" value="New CodeSkul Feedback">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <input type="hidden" name="_next" value="thankyou.html">
+
+                </form>
+
+            </section>
+        </section>
+
+
+        <!-- WHAT IS COMPUTER -->
+        <section id="computer" class="topic">
+            <h2>What is a Computer?</h2>
+            <img src="./Image/nnnmnmnj.jpg" alt="">
+
+            <p>
+                A computer is an electronic device that accepts data as input, processes it according to a given
+                instructions, stores it, and produces meaningful information as output
+                <br>A computer helps people perform tasks quickly, accurately, and efficiently.
+            </p>
+            <br>
+            <h3 style="text-align: center;">Types of Computer</h3>
+            <p>Computers are classified into different types based on their size and power, function, and purpose. Each
+                types is
+                designed to handle specific tasks, from simple personal use to complex scientific operations. Below are
+                the main types
+                of computers:</p>
+            <br>
+            <ol>
+                <li>Based on size and power</li>
+                <ul>
+                    <li>Supercomputer</li>
+                    <li>Mainframe Computer</li>
+                    <li>Minicomputer</li>
+                    <li>Microcomputer / personal</li>
+                </ul>
+                <br>
+                <li>Based on Purpose</li>
+                <ul>
+                    <li>General Purpose Computer</li>
+                    <li>Special Purpose Computer</li>
+                </ul>
+                <br>
+                <li>Based on Function</li>
+                <ul>
+                    <li>Analog Computer</li>
+                    <li>Digital Computer</li>
+                    <li>Hybrid Computer</li>
+                </ul>
+            </ol>
+            <br>
+            <div>
+                <h2 style="text-align: center;">Based on Size and Power</h2>
+                <p><strong style="color: #0a66c2;">Supercomputer:</strong> A supercomputer is the largest and most
+                    powerful type of computer. It performs very complex calculations at extremely high speed.</p>
+                <br>
+                <h3>Uses:</h3>
+                <ul>
+                    <li>Weather forecasting</li>
+                    <li>Scientific research</li>
+                    <li>Space exploration</li>
+                    <li>Nuclear research</li>
+                </ul>
+                <br>
+
+                <h3>Features:</h3>
+                <ul>
+                    <li>Very fast processing speed</li>
+                    <li>Large storage capacity</li>
+                    <li>Expensive</li>
+                </ul>
+
+                <br>
+                <p><strong style="color: #0a66c2;">Mainframe Computer:</strong> A mainframe computer is a large and
+                    powerful computer used by large organizations to process huge amounts of data.</p>
+                <br>
+                <h3>Uses:</h3>
+                <ul>
+                    <li>Banks</li>
+                    <li>Airlines</li>
+                    <li>Government offices</li>
+                    <li>Universities</li>
+                </ul>
+                <br>
+
+                <h3>Features:</h3>
+                <ul>
+                    <li>Supports many users at the same time</li>
+                    <li>High storage capacity</li>
+                    <li>Reliable</li>
+                </ul>
+                <br>
+                <p><strong style="color: #0a66c2;">Minicomputer:</strong> A minicomputer is smaller than a mainframe but
+                    powerful than a microcomputer.</p>
+                <br>
+                <h3>Uses:</h3>
+                <ul>
+                    <li>Schools</li>
+                    <li>Medium-sized businesses</li>
+                    <li>Factories</li>
+
+                </ul>
+                <br>
+
+                <h3>Features:</h3>
+                <ul>
+                    <li>Moderate processing speeed</li>
+                    <li>Supports multiple users</li>
+
+                </ul>
+                <br>
+                <p><strong style="color: #0a66c2;">Microcomputer:</strong> A microcomputer is the smallest and most
+                    common type of computer. <span style="font-style: italic;">Examples: Desktop computer, laptop,
+                        tablet and smartphone</span></p>
+                <br>
+                <h3>Uses:</h3>
+                <ul>
+                    <li>Weather forecasting</li>
+                    <li>Scientific research</li>
+                    <li>Space exploration</li>
+                    <li>Nuclear research</li>
+                </ul>
+                <br>
+
+                <h3>Features:</h3>
+                <ul>
+                    <li>Very fast processing speed</li>
+                    <li>Large storage capacity</li>
+                    <li>Expensive</li>
+                </ul>
+
+            </div>
+
+            <br>
+            <div>
+                <h2 style="text-align: center;">Based on Purpose</h2>
+                <p><strong style="color: #0a66c2;">General Purpose Computer:</strong> A general-purpose computer is
+                    designed to perform many different tasks.<span style="font-style: italic;"> Examples: Desktop
+                        computer, laptop,</span></p>
+                <br>
+                <h3>Uses:</h3>
+                <ul>
+                    <li>Typing documents</li>
+                    <li>Browsing the internet</li>
+                    <li>Playing games</li>
+                    <li>Watching videos</li>
+                </ul>
+                <br>
+
+                <h3>Features:</h3>
+                <ul>
+                    <li>Flexible</li>
+                    <li>Can run many programs</li>
+
+                </ul>
+                <br>
+
+                <p><strong style="color: #0a66c2;">Special Purpose Computer:</strong> A special-purpose computer is
+                    designed to perform only one specific tasks.<span style="font-style: italic;"> Examples: ATM
+                        machines, Traffic light control system, washing machine computer system</span></p>
+                <br>
+                <h3>Uses:</h3>
+                <ul>
+                    <li>Specific operations only</li>
+                </ul>
+                <br>
+
+                <h3>Features:</h3>
+                <ul>
+                    <li>Fast for its task</li>
+                    <li>Limited functions</li>
+
+                </ul>
+
+            </div>
+            <br>
+            <div>
+                <h2 style="text-align: center;">Based on Function</h2>
+                <p><strong style="color: #0a66c2;">Analog Computer:</strong> An analog computer processes continuous
+                    data.<span style="font-style: italic;"> Examples: Speedometer, thermometer</span></p>
+                <br>
+                <h3>Uses:</h3>
+                <ul>
+                    <li>Measuring physical quantities</li>
+                </ul>
+                <br>
+
+                <h3>Features:</h3>
+                <ul>
+                    <li>works with signals</li>
+                    <li>Less accurate than digital computers</li>
+
+                </ul>
+                <br>
+
+                <p><strong style="color: #0a66c2;">Digital Computer:</strong> A digital computer processes data using
+                    binary numbers (0 and 1).<span style="font-style: italic;"> Examples: Desktop, laptop,
+                        calculator</span></p>
+                <br>
+                <h3>Uses:</h3>
+                <ul>
+                    <li>Solving mathematical problems</li>
+                    <li>Data processing</li>
+                </ul>
+                <br>
+
+                <h3>Features:</h3>
+                <ul>
+                    <li>High accuracy</li>
+                    <li>Fast processing</li>
+
+                </ul>
+                <br>
+                <p><strong style="color: #0a66c2;">Hybrid Computer:</strong> A hybrid computer combines features of both
+                    analog and digital computers.<span style="font-style: italic;"> Examples: Hospital monitoring
+                        machines, petrol station pumps</span></p>
+                <br>
+                <h3>Uses:</h3>
+                <ul>
+                    <li>Medical field</li>
+                    <li>Scientific research</li>
+                </ul>
+                <br>
+
+                <h3>Features:</h3>
+                <ul>
+                    <li>Very efficient</li>
+                    <li>Combines speed and accuracy</li>
+
+                </ul>
+            </div>
+
+            <h2 style="text-align: center;">Tasks Performed by Computer</h2>
+            <p>Computers are powerful electronic devices designed to handle a variety of Operations quickly and
+                accurately. They
+                perform a set of essential tasks that make them useful in everyday life, education, bussiness, and many
+                other fields.
+                These tasks include:</p>
+            <br>
+            <Main class="content1">
+                <div class="timeline1">
+                    <div class="generation1" onclick="toggleDetails(this)">
+                        <i class="fas fa-keyboard"></i>
+                        <strong>DATA INPUT</strong>
+                        <div class="details1">
+
+                            <ul>
+                                <li><strong>What it is:</strong> The stage where raw data is collected and entered into
+                                    the system.
+                                </li>
+                                <li><strong>Examples:</strong> Typing with a keyboard, clicking a mouse, scanning a
+                                    barcode.</li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="timeline1">
+                    <div class="generation1" onclick="toggleDetails(this)">
+                        <i class="fas fa-keyboard"></i>
+                        <strong>DATA PROCESSING</strong>
+                        <div class="details1">
+
+                            <ul>
+                                <li><strong>What it is:</strong> The actual work done on the data using the CPU.</li>
+                                <li><strong>Examples:</strong> Calculations, sorting, comparing, decision-making.</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline1">
+                    <div class="generation1" onclick="toggleDetails(this)">
+                        <i class="fas fa-keyboard"></i>
+                        <strong>DATA STORAGE</strong>
+                        <div class="details1">
+
+                            <ul>
+                                <li><strong>What it is:</strong> Saving data and instructions for current or future use.
+                                </li>
+                                <li><strong>Examples:</strong> Saving a file to a hard drive or temporarily storing data
+                                    in RAM.</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline1">
+                    <div class="generation1" onclick="toggleDetails(this)">
+                        <i class="fas fa-keyboard"></i>
+                        <strong>DATA OUTPUT</strong>
+                        <div class="details1">
+
+                            <ul>
+                                <li><strong>What it is:</strong> Presenting the result of processing in a usable form.
+                                </li>
+                                <li><strong>Examples:</strong> Displaying result on a monitor, printing a report,
+                                    playing audio.</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </Main>
+
+
+
+
+            <br>
+            <h2 style="text-align: center; ">Characteristics of Computer</h2>
+
+
+            <div class="technology">
+                <div class="example">
+                    <h3>Speed</h3>
+                    <p>Processes millions of instructions per second.</p>
+                </div>
+
+                <div class="example">
+
+                    <h3>Accuracy</h3>
+                    <p>Performs tasks with high precision; errors usually come from humans.</p>
+                </div>
+
+                <div class="example">
+
+                    <h3>Automation</h3>
+                    <p>Executes tasks automatically once programmed</p>
+                </div>
+
+                <div class="example">
+
+                    <h3>Storage</h3>
+                    <p>Stores large amounts of data, both temporarily (RAM) and permanently (HDD/SSD).</p>
+                </div>
+
+                <div class="example">
+
+                    <h3>Diligence</h3>
+                    <p>Doesn't get tired, bored, or distracted - can work continuously.</p>
+                </div>
+
+                <div class="example">
+
+                    <h3>Mutitasking</h3>
+                    <p>Handle multiple tasks simultaneously.</p>
+                </div>
+
+                <div class="example">
+
+                    <h3>Communication</h3>
+                    <p>Send and received data over networks (internet, LAN).</p>
+                </div>
+
+                <div class="example">
+
+                    <h3>Logical operation</h3>
+                    <p>Makes decision based on logical comparisons (if-else conditions).</p>
+                </div>
+
+                <div class="example">
+
+                    <h3>No IQ</h3>
+                    <p>Lacks intelligence; work based on intructons given.</p>
+                </div>
+
+
+            </div>
+
+            <br>
+
+            <h2 style="text-align: center;">Data Processing Cycle</h2>
+            <h3>What is Data Processing Cycle?</h3>
+            <br>
+            <p>The <strong>Data Processing Cycle</strong> is a series of steps used by a computer to collect, process,
+                and store, and produce useful information from raw data. It helps transform input data into meaningful
+                output.</p>
+            <br>
+
+            <h2 style="text-align: center;">Stages of Data Processing Cycle</h2>
+            <p>The Data Processing Cycle is divided into four (4) main stages, which describe how data is handled in a
+                computer system.</p>
+
+            <ul>
+                <li>Data Input</li>
+                <li>Data Processing</li>
+                <li>Data Output</li>
+                <li>Data Storage</li>
+            </ul>
+
+            <br>
+            <h2 style="text-align: center;"> How the Data Processing Cycle Works</h2>
+            <p>The data processing cycle begins with input, where data is entered into the system, followed by
+                processing, where the
+                CPU performs operations on the data. The result is displayed as output. Finally, the information is
+                stored for future use.</p>
+            <br>
+
+            <h2 style="text-align: center; color: orangered;">Diagram</h2>
+
+            <div class="flow">
+                Input → Processing → Output → Storage
+            </div>
+            <br>
+            <div style=" font-style: italic;">
+                <h3>Example</h3>
+                <p>When a student enters examination scores into a computer:</p>
+                <ul>
+                    <li>Input → Scores entered</li>
+                    <li>Processing → Computer calculates total and average</li>
+                    <li>Output → Result displayed</li>
+                    <li>Storage → Result saved in database</li>
+
+                </ul>
+            </div>
+            <br>
+
+            <h2 style="text-align: center;">Block Diagram of Computer</h2>
+            <p>The block diagram of computer is a simple model that shows the major parts of a computer system and how
+                they work together to process data.</p>
+
+            <br>
+
+            <h2 style="text-align: center;">Block Diagram of Computer</h2>
+
+            <div class="diagram">
+                <div class="box">INPUT UNIT</div>
+                <div class="arrow">→</div>
+                <div class="box cpu">CPU <br>(Processing Unit)</div>
+                <div class="arrow">→</div>
+                <div class="box">OUTPUT UNIT</div>
+            </div>
+            <div class="diagram">
+                <div class="box">MEMORY / STORAGE UNIT</div>
+            </div>
+            <br>
+
+            <h2 style="text-align: center;">Explanation of Each Unit</h2>
+            <ul>
+                <li> <strong>1. Input Unit:</strong> This unit is used to enter data into the computer. Example:
+                    Keyboard, Mouse, Scanner.</li>
+                <li> <strong>2. CPU (Central Processing Unit):</strong> It is the brain of the computer. It processes
+                    data and controls all computer operations.</li>
+                <li> <strong>3. Output Unit:</strong> This unit displays processed information to the user. Example:
+                    Monitor, Printer, Speaker.</li>
+                <li> <strong>4. Memory / Storage Unit:</strong> It stores data and information for future use. Example:
+                    Hard disk, Flash Drive.</li>
+            </ul>
+            <br>
+            <h2 style="text-align: center;">How It Works</h2>
+            <ul>
+                <li>Data is entered through input unit</li>
+                <li>CPU processes the data</li>
+                <li>Output shows the result</li>
+                <li>Storage unit saves the result</li>
+            </ul>
+            <br>
+            <div style="font-style: italic;">
+                <h3>Example</h3>
+                <p>Typing and Printing a Document</p>
+
+                <ul>
+                    <li> <strong>Input Unit:</strong> You type text using the keyboard.</li>
+                    <li> <strong>CPU:</strong> The computer processes the typed text.</li>
+                    <li> <strong>Output Unit:</strong> The text appears on the monitor or printer.</li>
+                    <li><strong>Storage Unit:</strong> The document is saved on the hard disk.</li>
+                </ul>
+            </div>
+            <br>
+
+            <p>Below are some essay questions to help improve your understanding of computer.</p>
+
+            <section>
+                <h2 style="text-align: center;">Essay Questions</h2>
+                <div class="question">
+                    1. Define a computer and explain the different types of based on size, power, and purpose.</div>
+
+                <div class="question">
+                    2. Explain the tasks Performed by a computer and describe the main characteristics of a computer
+                    system.</div>
+
+                <div class="question">
+                    3. What is the data processing cycle? Explain its stage and describe how the data processing cycle
+                    works with examples
+                </div>
+
+                <div class="question">
+                    4. Draw and explain the block diagram of a computer, describe each unit, and explain how the
+                    computer system works
+                </div>
+            </section>
+
+
+            <div class="action-buttons">
+                <button onclick="alert('Quiz section below')">View Quiz</button>
+                <button onclick="alert('Tutorial videos coming soon')">View Tutorials</button>
+            </div>
+
+
+            <form action="https://formsubmit.co/saidukaloko072@gmail.com" method="POST" class="feedback">
+
+                <h3 style="color: black;">Leave Feedback</h3>
+
+                <input type="text" name="name" placeholder="Your Name" required>
+
+                <input type="email" name="email" placeholder="Your Email" required>
+
+                <textarea name="feedback" placeholder="Write your feedback..." required>
+              </textarea>
+
+                <button type="submit">Submit Feedback</button>
+
+                <input type="hidden" name="_subject" value="New CodeSkul Feedback">
+                <input type="hidden" name="_captcha" value="false">
+
+                <input type="hidden" name="_next" value="thankyou.html">
+
+            </form>
+        </section>
+
+        <!-- CLASSIFICATION -->
+        <section id="classification" class="topic">
+            <h2>Classification of Computers</h2>
+            <p>Computer classification is the grouping of computers according to their size, purpose, power, and the way
+                they process data.
+                Below are the common Classifications of computers based on various criteria.
+            </p>
+            <br>
+            <ol>
+                <li>Classification of computers based on size & power</li>
+                <li>Classification of computers based on purpose</li>
+                <li>Classification of computers based on data handling / functionality</li>
+            </ol>
+            <br>
+            <h2 style="text-align: center;">1. Classification of Computer Based on Size & Power</h2>
+            <p>Classification of computers based on size and power is the grouping of computers according to their
+                <strong>physical size, storage capacity, and processing speed.</strong> Based on this, computers are
+                divided into four (4) main categories:
+            </p>
+            <br>
+            <ul>
+                <li>Supercomputers</li>
+                <li>Mainframe Computers</li>
+                <li>Mini Computers</li>
+                <li>Microcomputers</li>
+            </ul>
+            <br>
+            <div>
+                <h2 style="text-align: center;">Supercomputer</h2>
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Very large in size</li>
+                    <li>Extremely fast processing speed</li>
+                    <li>Very high storage capacity</li>
+                    <li>Very expensive</li>
+                    <li>Can process complex calculations quickly</li>
+                    <li>Used by many processor at the same time</li>
+                </ul>
+            </div>
+            <br>
+
+            <div>
+                <h2 style="text-align: center;">Mainframe Computer</h2>
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Large in size</li>
+                    <li>High processing speed</li>
+                    <li>Large storage capacity</li>
+                    <li>Supports many users at once</li>
+                    <li>Reliable and secure</li>
+                    <li>Expensive</li>
+                </ul>
+            </div>
+            <br>
+
+            <div>
+                <h2 style="text-align: center;">Minicomputer</h2>
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Medium-size</li>
+                    <li>Moderate processing speed</li>
+                    <li>Modrate storage capacity</li>
+                    <li>Supports multiple users</li>
+                    <li>Less expensive than mainframe</li>
+                </ul>
+            </div>
+            <br>
+
+            <div>
+                <h2 style="text-align: center;">Microcomputer</h2>
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Smaller size</li>
+                    <li>Low processing power compared to others</li>
+                    <li>Limited storage capacity</li>
+                    <li>Designed for one user</li>
+                    <li>Affordable</li>
+                    <li>Easy to use</li>
+                </ul>
+            </div>
+            <br>
+
+            <h2 style="text-align: center;">Kinds of Microcomputer</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+
+                            <th>Types</th>
+                            <th>Description</th>
+                            <th>Features</th>
+                            <th>Uses</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+
+                            <td>Desktop Computer</td>
+                            <td>A computer designed to be used on a desk.</td>
+                            <td>Large monitor, separate keyboard and mouse</td>
+                            <td>Home, school, office</td>
+                        </tr>
+
+                        <tr>
+
+                            <td>Laptop Computer</td>
+                            <td>A portable computer that is easy to carry</td>
+                            <td>Battery-powered, lightweight, built-in keyboard</td>
+                            <td>School, travel, business</td>
+                        </tr>
+
+                        <tr>
+
+                            <td>Tablet Computer</td>
+                            <td>A portable touchscreen computer</td>
+                            <td>Touchscreen, lightweight, compact</td>
+                            <td>Reading, browsing, videos</td>
+                        </tr>
+
+                        <tr>
+
+                            <td>Smartphone</td>
+                            <td>A handled computer with phone functions</td>
+                            <td>Internet access, apps, touchscreen</td>
+                            <td>Communication, learning</td>
+                        </tr>
+
+                        <tr>
+
+                            <td>Workstation</td>
+                            <td>A powerful computer for technical tasks.</td>
+                            <td>High speed, large memory, strong graphics</td>
+                            <td>Engineering, programming, design</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+
+            <h2 style="text-align: center;">2. Classification of Computer Based on Purpose</h2>
+
+            <p>Classification of computers based on purpose is the grouping of computers according to the
+                <strong>specific work or task they are designed to perform.</strong></strong> Computer based on purpose
+                are classified into two types::
+            </p>
+            <br>
+            <ul>
+                <li>General Purpose Computer</li>
+                <li>Specific Purpose Computer</li>
+            </ul>
+            <br>
+
+            <div>
+                <h2 style="text-align: center;">General Purpose Computer</h2>
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Can perform many different tasks</li>
+                    <li>Flexible and versatile</li>
+                    <li>Can run different software programs</li>
+                    <li>Used for general daily activities</li>
+                    <li>Can be reprogrammed for different work</li>
+                    <li>Suitable for many users</li>
+                </ul>
+            </div>
+            <br>
+
+            <div>
+                <h2 style="text-align: center;">Specific Purpose Computer</h2>
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Designed for only one specific task</li>
+                    <li>Works faster for that task</li>
+                    <li>Less flexible</li>
+                    <li>Cannot easily perform other tasks</li>
+                    <li>Built for accuracy in a particular operation</li>
+                    <li>Usually embedded inside machines</li>
+                </ul>
+            </div>
+            <br>
+
+            <h2 style="text-align: center;">2. Classification of Computer Based on Data Handling / Functionality</h2>
+
+            <p>Classification of computers based on data handling or functionality is the grouping of computers
+                according to the <strong>way they process and handle data.</strong> Computers based on data handling are
+                classified into three (3) types:
+            </p>
+            <br>
+
+            <div>
+                <h2 style="text-align: center;">Analog Computer</h2>
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Process continuous data</li>
+                    <li>Works with measurements</li>
+                    <li>Give approximate results</li>
+                    <li>Very fast in handling physical data</li>
+                    <li>Used for scientific and engineering purposes</li>
+                </ul>
+            </div>
+            <br>
+
+            <div>
+                <h2 style="text-align: center;">Digital Computer</h2>
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Processes data in numbers (0 and 1)</li>
+                    <li>Give accurate results</li>
+                    <li>Can store large amounts of data</li>
+                    <li>Easy to program</li>
+                    <li>Perform many different tasks</li>
+                </ul>
+            </div>
+            <br>
+
+            <div>
+                <h2 style="text-align: center;">Hybrid Computer</h2>
+                <h3>Characteristics</h3>
+                <ul>
+                    <li>Combines analog and digital features</li>
+                    <li>Processes both continuous and numerical data</li>
+                    <li>Very fast and accurate</li>
+                    <li>More complex to design</li>
+                    <li>Used for specialized tasks</li>
+                </ul>
+            </div>
+            <br>
+
+            <p>Here are some essay questions based on the characteristics of computer classification</p>
+
+            <section>
+                <h2 style="text-align: center;">Essay Questions</h2>
+                <div class="question">
+                    1. Explain the classification of computers based on size and power, stating the characteristics of
+                    each type.</div>
+
+                <div class="question">
+                    2. Discuss the classification of computers based on purpose and state the characteristics of each
+                    type.</div>
+
+                <div class="question">
+                    3. Explain the classification of computers based on data handling / functionality and the
+                    characteristics of each type.
+                </div>
+
+                <div class="question">
+                    4. Differentiate between computers based on size and power, purpose, and data handling using their
+                    characteristics.
+                </div>
+            </section>
+
+
+            <div class="action-buttons">
+                <button onclick="alert('Quiz section below')">View Quiz</button>
+                <button onclick="alert('Tutorial videos coming soon')">View Tutorials</button>
+            </div>
+
+
+            <form action="https://formsubmit.co/saidukaloko072@gmail.com" method="POST" class="feedback">
+
+                <h3 style="color: black;">Leave Feedback</h3>
+
+                <input type="text" name="name" placeholder="Your Name" required>
+
+                <input type="email" name="email" placeholder="Your Email" required>
+
+                <textarea name="feedback" placeholder="Write your feedback..." required>
+              </textarea>
+
+                <button type="submit">Submit Feedback</button>
+
+                <input type="hidden" name="_subject" value="New CodeSkul Feedback">
+                <input type="hidden" name="_captcha" value="false">
+
+                <input type="hidden" name="_next" value="thankyou.html">
+
+            </form>
+        </section>
+
+
+        <!-- USES -->
+        <section id="uses" class="topic">
+            <h2>Importance / Uses of Computer</h2>
+            <p>Computers are used in almost every area of life today. Here are the main importance and uses of
+                Computers:</p>
+
+            <br>
+
+            <h2>1. Education</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/EgktwaIoMzWICbjj9e317.jpg" alt="Laptop">
+                    <h3>Online Learning</h3>
+                    <p>Computers allow students to take online courses and access educational materials from anywhere.
+                    </p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/a7L6C1isokgjplsjgh8Rw.jpg" alt="Laptop">
+                    <h3>Research</h3>
+                    <p>Students and teachers use computers to find information, read article, and study various subjects
+                        online.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/8keNY1j_nIxyj78ShSMDn.jpg" alt="Laptop">
+                    <h3>Simultations</h3>
+                    <p>Computers help create models and simultations to explain complex concepts in science,
+                        engineering, and medicine.</p>
+                </div>
+            </div>
+            <br>
+
+
+            <h2>2. Communication</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/dN0jhlFrCqKayMWtjh_-f.jpg" alt="">
+                    <h3>Email</h3>
+                    <p>
+                        Computers make it easy to send and receive messages instantly through email.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/qGd57FYqiKFPOzOmrtPX1.jpg" alt="">
+                    <h3>Instant Messaging & Video Calls</h3>
+                    <p>
+                        You can chat with friends or colleagues in real-time using messaging apps and video calling
+                        plateforms like whatsapp or
+                        zoom.</p>
+                </div>
+
+
+                <div class="example">
+                    <img src="./Image/BtLy2OaqyLTaBAbaVKX_x.jpg" alt="">
+                    <h3>Social media</h3>
+                    <p>
+                        Computers let people interact with others on social media plateforms like facebook, twitter, and
+                        instagram, keeping them
+                        connected globally.</p>
+                </div>
+            </div>
+
+            <h2>3. Health</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/ZIghd1115AL-2Lwe9O_Dx.jpg" alt="">
+                    <h3>Medical Records</h3>
+                    <p>
+                        Computers store and manage patient information and medical records, making healthcare more
+                        efficient.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/qBpQzRo3XpMSOAITaLDuQ.jpg" alt="">
+                    <h3>Telemedicine</h3>
+                    <p>
+                        Paticent can consult doctors remotely through video calls or online plateforms, reducing the
+                        need to travel.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/CuoNMaqfq9CJZnFrR6T5X.jpg" alt="">
+                    <h3>Health Research</h3>
+                    <p>
+                        Computers are used in analysing health data, medical images, and developing new treatment or
+                        cures.</p>
+                </div>
+
+            </div>
+
+            <h2>4. Business Operation</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/vtRUlvUU9OLMTYFmwpZh4.jpg" alt="">
+                    <h3>Business Operations</h3>
+                    <p>
+
+                        Computers help businesses with tasks like inventory management, payroll, and customer service
+                        through specialized
+                        software.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/3xB3yBunz15jkr5_5RuZ0.jpg" alt="">
+                    <h3>E-commerce</h3>
+                    <p>
+
+                        Computers enable businesses to sell products and services online, allowing customers to shop
+                        from anywhere.
+
+                    </p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/Too5A2e1KqUZkH3J5jWd_.jpg" alt="">
+                    <h3>Banking and Financial Transactions</h3>
+                    <p>
+
+                        Bank use computers to handle transactions, manage accounts, and povide online banking services.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <h2>5. Home</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/qWk-FFLCzJKMJAkLUOjSb.jpg" alt="">
+                    <h3>Personal Tasks</h3>
+                    <p>
+
+                        At home, people use computers to manage emails, pay bills, shop online, and organize daily
+                        schedules.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/KTN4G6rzcVQr7OcO_Tigr.jpg" alt="">
+                    <h3>Smart Homes</h3>
+                    <p>
+
+                        Computers help control smart devices, such as thermostats, lights, and security cameras, making
+                        homes more automated.
+
+                    </p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/zUkmwCQJCI_7Pnc2hgSgy.jpg" alt="">
+                    <h3>Entertainment</h3>
+                    <p>
+
+                        Computers are used for watching movies, listening to music, playing games, and browsing the
+                        internet for fun</p>
+                </div>
+
+            </div>
+
+
+            <h2>6. Transportation</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/SDKliJ-puj6YaGVG6ZBO4.jpg" alt="">
+                    <h3>Traffic Management</h3>
+                    <p>
+
+                        Traffic control systems use computers to manage traffic flow, monitor traffic conditions, and
+                        reduce congestion.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/3CXA62KJrTs19xE_hVdS_.jpg" alt="">
+                    <h3>Navigation</h3>
+                    <p>
+
+                        Computers in GPS system help drivers find routes, avoid trafic, and reach destinations faster
+
+                    </p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/sJpbUjuTQGB0FyuodIJbJ.jpg" alt="">
+                    <h3>Public Transportation</h3>
+                    <p>
+
+                        Computers help in scheduling buses, trains, and flights, ensuring smooth operations and
+                        real-time updates for
+                        passengers.
+                    </p>
+                </div>
+
+            </div>
+
+            <h2 style="text-align: center;">Risks in Using Computer</h2>
+            <p>While computers offer countless benefits in education, business, healthcare, and communication, their use
+                also comes
+                with certain risks. These risks can affect users' data, health, privacy, and overall well-being if not
+                properly managed.
+                It's important to be aware of these challenges to use computers safely and responsibly. Below are some
+                of the main risks
+                associated with using computers:</p>
+            <br>
+            <h2>1. Cybersecurity threat</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/SDKliJ-puj6YaGVG6ZBO4.jpg" alt="">
+                    <h3>Viruses amd Malware</h3>
+                    <p> Malicious software can infiltrate a computer system, corrupt files, slow down performance, or
+                        steal senesitive
+                        information without the user's knowledge.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/3CXA62KJrTs19xE_hVdS_.jpg" alt="">
+                    <h3>phishing Attacks</h3>
+                    <p>Users may receive fake emails or visit fraudulent websites designed to trick them into revealing
+                        passwords, bank
+                        details, or personal data.
+
+                    </p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/sJpbUjuTQGB0FyuodIJbJ.jpg" alt="">
+                    <h3>Unauthorized Access</h3>
+                    <p>
+
+
+                        Hackers can exploit system vulnerabilities to gain access to private files, online accounts, or
+                        even full control of a
+                        device or network.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <h2>2. Data Loss</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/SDKliJ-puj6YaGVG6ZBO4.jpg" alt="">
+                    <h3>Accidental Deletion</h3>
+                    <p>Users might unintentionally delete important files or documents, especially when organizing or
+                        cleaning up storage.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/3CXA62KJrTs19xE_hVdS_.jpg" alt="">
+                    <h3>Hardware Failure</h3>
+                    <p>Components like hard drivers can suddenly malfunction or crash, rsesulting in the loss of all
+                        data stored on them.
+
+                    </p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/sJpbUjuTQGB0FyuodIJbJ.jpg" alt="">
+                    <h3>Lack of Backup Systems</h3>
+                    <p> Without regularly backing up files to external storage or the cloud, recovery becomes impossible
+                        when data is lost.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <h2>3. Health Issues</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/SDKliJ-puj6YaGVG6ZBO4.jpg" alt="">
+                    <h3>Eye Strain</h3>
+                    <p>Spending long hours in front of a screen without proper lighting or breaks can cause blurred
+                        vision, headaches, and
+                        discomfort, often referred to as Computer Vision Syndrome.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/3CXA62KJrTs19xE_hVdS_.jpg" alt="">
+                    <h3>Poor Posture</h3>
+                    <p>
+                        Sitting improperly at a computer desk for extended periods can lead to chronic neck, shoulder,
+                        or lower back pain.
+
+                    </p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/sJpbUjuTQGB0FyuodIJbJ.jpg" alt="">
+                    <h3>Repetitive Stress Injuries</h3>
+                    <p>
+                        Frequent typing or mouse use without ergonomic support can cause wrist pain, carpal tunnel
+                        syndrome, or joint discomfort
+                        over time.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <h2>4. Digital Addiction</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/SDKliJ-puj6YaGVG6ZBO4.jpg" alt="">
+                    <h3>Overuse of Social Media or Gaming</h3>
+                    <p>
+                        Excessive engagement with online content can interfere with daily responsibilities, reducing
+                        concentration and
+                        productivity.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/3CXA62KJrTs19xE_hVdS_.jpg" alt="">
+                    <h3>Sleep Disruption</h3>
+                    <p> Prolonged screen exposure, especially before bedtime, can interfere with natural sleep cycles
+                        and result in insomnia or
+                        fatigue.
+
+                    </p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/sJpbUjuTQGB0FyuodIJbJ.jpg" alt="">
+                    <h3>Social Isolation</h3>
+                    <p>Heavy dependence on digital devices an reduce in-person interaction, affecting communication
+                        skills and emotional
+                        well-being.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <h2>5. Privacy Concerns</h2>
+            <div class="technology">
+                <div class="example">
+                    <img src="./Image/SDKliJ-puj6YaGVG6ZBO4.jpg" alt="">
+                    <h3>Tracking and Monitoring</h3>
+                    <p>
+
+                        Many websites and apps collect user data to monitor behavior, preferences, and location, often
+                        without transparent
+                        consent.</p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/3CXA62KJrTs19xE_hVdS_.jpg" alt="">
+                    <h3>Weak Privacy Settings</h3>
+                    <p>
+                        Not adjusting settings on devices or plateforms can leave personal data exposed to advertisers
+                        or even cybercriminals.
+
+                    </p>
+                </div>
+
+                <div class="example">
+                    <img src="./Image/sJpbUjuTQGB0FyuodIJbJ.jpg" alt="">
+                    <h3>Data Misuse</h3>
+                    <p>
+                        Information such as email addressess, browsing history, or personal details may be sold, shared,
+                        or leaked without the
+                        user's permission.
+                    </p>
+                </div>
+
+            </div>
+            <br>
+
+
+            <section>
+                <h2 style="text-align: center;">Essay Question</h2>
+                <div class="question">
+                    1. Discuss the importance of computers in education, business, and communication.
+                </div>
+
+            </section>
+
+
+            <div class="action-buttons">
+                <button onclick="alert('Quiz section below')">View Quiz</button>
+                <button onclick="alert('Tutorial videos coming soon')">View Tutorials</button>
+            </div>
+
+
+            <form action="https://formsubmit.co/saidukaloko072@gmail.com" method="POST" class="feedback">
+
+                <h3 style="color: black;">Leave Feedback</h3>
+
+                <input type="text" name="name" placeholder="Your Name" required>
+
+                <input type="email" name="email" placeholder="Your Email" required>
+
+                <textarea name="feedback" placeholder="Write your feedback..." required>
+                      </textarea>
+
+                <button type="submit">Submit Feedback</button>
+
+                <input type="hidden" name="_subject" value="New CodeSkul Feedback">
+                <input type="hidden" name="_captcha" value="false">
+
+                <input type="hidden" name="_next" value="thankyou.html">
+
+            </form>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <a href="#" id="brainLink">The Brain Behind the Website</a>
+        <p>© 2026 CodeSkul</p>
+    </footer>
+
+    <script>
+        // TOPIC SWITCH
+        function showTopic(id) {
+            document.querySelectorAll('.topic').forEach(topic => {
+                topic.classList.remove('active');
+            });
+
+            document.getElementById(id).classList.add('active');
+        }
+
+        document.getElementById("search").addEventListener("keyup", function () {
+            let value = this.value.toLowerCase();
+
+            document.querySelectorAll(".topic").forEach(topic => {
+                topic.style.display =
+                    topic.innerText.toLowerCase().includes(value)
+                        ? "block"
+                        : "none";
+            });
+        });
+
+
+        // QUIZ
+        function check(btn, correct) {
+            btn.style.background = correct ? "green" : "red";
+        }
+
+        // THEME
+        document.getElementById('themeToggle').onclick = function () {
+            document.body.classList.toggle('dark');
+        };
+
+
+        // back
+        function goBack() {
+            window.location.href = "index.html";
+        }
+
+
+
+        function toggleDetails(element) {
+            const detail =
+                element.querySelector(".details1");
+            detail.style.display =
+                detail.style.display === "block" ?
+                    "none" : "block";
+        }
+
+    </script>
+
+</body>
+
+</html>

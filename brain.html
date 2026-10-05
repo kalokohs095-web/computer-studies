@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Brain Behind the Website | Codeskul Computer Studies</title>
+
+    <meta name="description" content="Meet Saidu Kalokoh, the developer behind Codeskul Computer Studies.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+            background: black;
+            
+
+            color: white;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .developer-header {
+            background: linear-gradient(135deg, #071b3a, #0b4f9c);
+            color: white;
+            text-align: center;
+            padding: 70px 20px 110px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .developer-header::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            top: -100px;
+            left: -80px;
+        }
+
+        .developer-header::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            bottom: -180px;
+            right: -100px;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .small-title {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .developer-header h1 {
+            font-size: clamp(32px, 6vw, 60px);
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .developer-header p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+            opacity: 0.95;
+            
+        }
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .developer-container {
+            width: 92%;
+            max-width: 1100px;
+            margin: -75px auto 60px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-image-area {
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 230px;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 7px solid white;
+            box-shadow: 0 0 0 5px  #007bff;
+            background: #e9eef5;
+        }
+
+        .profile-image-area h2 {
+            margin-top: 20px;
+            font-size: 28px;
+            color:  #007bff;
+        }
+
+        .profile-image-area span {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .profile-content h2 {
+            color:  #007bff;
+            margin-bottom: 12px;
+            font-size: 30px;
+        }
+
+        .profile-content p {
+            color: #4b5563;
+            margin-bottom: 15px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 18px;
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        .developer-section {
+            width: 92%;
+            max-width: 1100px;
+            margin: 0 auto 35px;
+        }
+
+        
+
+        .section-title {
+            color:white;
+            font-size: 28px;
+            margin-bottom: 12px;
+             font-family: 'Segoe UI', sans-serif;
+        }
+
+        .section-intro {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* =========================
+           TWO COLUMN
+        ========================= */
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+            font-family: 'Segoe UI', sans-serif;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            
+        }
+
+        .skill {
+            background: #f2f7ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            border-radius: 20px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill:hover{
+            transform: translateY(-5px);
+        }
+
+        .skill strong {
+            display: block;
+            color: #007bff;
+            margin-bottom: 4px;
+        }
+
+        .skill span {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* =========================
+           JOURNEY
+        ========================= */
+
+        .journey {
+            border-left: 3px solid #007bff;
+            padding-left: 25px;
+            margin-top: 20px;
+        }
+
+        .journey-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .journey-item::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #007bff;
+            border-radius: 50%;
+            left: -32px;
+            top: 8px;
+        }
+
+        .journey-item h3 {
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .journey-item p {
+            color: #667085;
+        }
+
+        /* =========================
+           PROJECT
+        ========================= */
+
+        
+
+        .project-box h3 {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .project-box p {
+            opacity: 0.95;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .project-tags span {
+            
+            padding: 7px 12px;
+            border-radius: 30px;
+            font-size: 13px;
+        }
+
+        /* =========================
+           BOSS SECTION
+        ========================= */
+
+        .mentor-box {
+            
+            border-left: 5px solid #0b66c3;
+            
+            padding: 25px;
+        }
+
+        .mentor-box h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .mentor-box p {
+            color: white;
+            font-size: 18px;
+        }
+
+        .mentor-name {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        /* =========================
+           VISION
+        ========================= */
+
+        .vision-box {
+            text-align: center;
+            padding: 40px 25px;
+            
+            
+        }
+
+        .vision-box .quote {
+            font-size: 25px;
+            font-weight: bold;
+            color: #0b4f9c;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            padding: 11px 18px;
+            border-radius: 30px;
+            background: #eef4fb;
+            color: #0b4f9c;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #0b66c3;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .developer-footer {
+            text-align: center;
+            background: #071b3a;
+            color: white;
+            padding: 35px 20px;
+            margin-top: 60px;
+        }
+
+        .developer-footer p {
+            opacity: 0.85;
+            font-size: 14px;
+        }
+
+         button{
+            cursor:pointer;
+            border:none;
+            padding:10px 16px;
+            border-radius:8px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .developer-header {
+                padding: 55px 18px 100px;
+            }
+
+            .developer-header p {
+                font-size: 16px;
+            }
+
+            .profile-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 25px 20px;
+                gap: 25px;
+            }
+
+            .profile-image {
+                width: 190px;
+                height: 190px;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section-card {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .developer-container {
+                width: 94%;
+            }
+
+            .developer-section {
+                width: 94%;
+            }
+
+            .developer-header h1 {
+                font-size: 34px;
+            }
+
+            .developer-header p {
+                font-size: 15px;
+            }
+
+            .profile-image {
+                width: 160px;
+                height: 160px;
+            }
+
+            .profile-image-area h2 {
+                font-size: 24px;
+            }
+
+            .profile-content h2 {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 23px;
+            }
+
+            .section-card {
+                padding: 22px 16px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vision-box .quote {
+                font-size: 20px;
+            }
+
+            .social-links {
+                flex-direction: column;
+            }
+
+            .social-links a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .project-box {
+                padding: 24px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <!-- =========================
+     HEADER
+========================= -->
+
+    <header class="developer-header">
+        <button onclick="goBack()">⬅ Back</button>
+
+        <div class="header-content">
+<br>
+            <div class="small-title">
+                Codeskul Computer Studies
+            </div>
+
+            <h1 style="font-family: 'Segoe UI', sans-serif;">The Brain Behind the Website</h1>
+
+            <p style="font-family: 'Segoe UI', sans-serif;">
+                Meet the young developer behind Codeskul Computer Studies —
+                learning, creating and using technology to make computer
+                education easier and more accessible.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+     PROFILE
+========================= -->
+
+    <main>
+
+        <div class="developer-container">
+
+            <section class="profile-card">
+
+                <div class="profile-image-area">
+
+                    <!-- REPLACE THIS IMAGE WITH YOUR OWN -->
+                    <img class="profile-image"
+                        src="Image/file_00000000477071f4a516629937637050.png"
+                        alt="Saidu Kalokoh">
+
+                    <h2>Saidu Kalokoh</h2>
+
+                    <span>
+                        Student • Web Developer • Technology Enthusiast
+                    </span>
+
+                </div>
+
+
+                <div class="profile-content">
+
+                    <h2>Hello, I'm Saidu 👋</h2>
+
+                    <p>
+                        I am Saidu Kalokoh, a young technology enthusiast and
+                        aspiring developer with a strong interest in computers,
+                        programming and digital innovation.
+                    </p>
+
+                    <p>
+                        My journey into technology is driven by curiosity,
+                        creativity and the desire to learn how digital tools
+                        can solve real problems and create opportunities for
+                        young people.
+                    </p>
+
+                    <p>
+                        <strong>
+                            Codeskul Computer Studies is part of that journey —
+                            a place where computer knowledge can be explained
+                            in a simple, practical and student-friendly way.
+                        </strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- =========================
+         ABOUT ME
+    ========================= -->
+
+        <section class="developer-section">
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    About Me
+                </h2>
+
+                <p class="section-intro">
+                    My goal is not simply to use technology, but to understand
+                    it, build with it and use it to create useful solutions.
+                </p>
+
+                <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                    I am continuously developing my knowledge through practice,
+                    experimentation and personal projects. I believe that
+                    technology becomes more powerful when young people are given
+                    the opportunity to learn how it works and how they can
+                    create with it.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+         WHY CODESKUL
+    ========================= -->
+
+        <section class="developer-section">
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    Why I Created Codeskul Computer Studies
+                </h2>
+
+                <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                    I created Codeskul Computer Studies because I believe that
+                    learning computer studies should be more than memorising
+                    definitions from a textbook.
+                </p>
+
+                <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                    Students should be able to understand concepts, see
+                    practical examples and develop the confidence to use
+                    computers themselves.
+                </p>
+
+                <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                    Codeskul computer studies was created to provide simple explanations,
+                    practical activities and beginner-friendly computer
+                    lessons that can help students move from simply
+                    <strong>using technology</strong> to understanding and
+                    eventually <strong>creating with technology.</strong>
+                </p>
+
+            </div>
+<br>
+            <img src="./Image/IMG_8728.jpeg" alt=""  style="align-items: center; border-radius: 15px; width: 100%; max-width: 900px; height: auto; display: block; margin: 0 auto; ">
+
+        </section>
+
+
+        <!-- =========================
+         EDUCATION + INTERESTS
+    ========================= -->
+
+        <section class="developer-section">
+
+            <div class="two-column">
+
+                <div class="section-card">
+
+                    <h2 class="section-title">
+                        My Education
+                    </h2>
+
+                    <div class="journey">
+
+                        <div class="journey-item">
+
+                            <h3>WASSCE</h3>
+
+                            <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                                I completed the West African Senior School
+                                Certificate Examination (WASSCE), which forms
+                                part of my educational foundation and continues
+                                to motivate my journey into technology.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section-card">
+
+                    <h2 class="section-title">
+                        My Technology Interests
+                    </h2>
+
+                    <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                        My interests go beyond simply creating websites. I am
+                        interested in understanding how different areas of
+                        technology work together to solve real-world problems.
+                    </p>
+
+                    <p style="color: #000; font-size: 18px;">
+                        My interests include web development, software
+                        development, computer science, electronics, Internet of
+                        Things (IoT), educational technology, automation,
+                        artificial intelligence and digital entrepreneurship.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+         SKILLS
+    ========================= -->
+
+        <section class="developer-section">
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    My Skills
+                </h2>
+
+                <p class="section-intro">
+                    These are some of the technologies and skills I am learning
+                    and developing through practical work.
+                </p>
+
+                <div class="skills-grid">
+
+                    <div class="skill">
+                        <strong>HTML</strong>
+                        <span style="color: #000; font-size: 18px;">Building the structure of websites.</span>
+                    </div>
+
+                    <div class="skill">
+                        <strong>CSS</strong>
+                        <span style="color: #000; font-size: 18px;">Designing attractive and responsive websites.</span>
+                    </div>
+
+                    <div class="skill">
+                        <strong>JavaScript</strong>
+                        <span style="color: #000; font-size: 18px;">Adding interaction and functionality to websites.</span>
+                    </div>
+
+                    <div class="skill">
+                        <strong>Responsive Design</strong>
+                        <span style="color: #000; font-size: 18px;">Creating websites that work across different screen sizes.</span>
+                    </div>
+
+                    <div class="skill">
+                        <strong>Problem Solving</strong>
+                        <span style="color: #000; font-size: 18px;">Breaking problems into smaller practical solutions.</span>
+                    </div>
+
+                    <div class="skill">
+                        <strong>UI Design</strong>
+                        <span style="color: #000; font-size: 18px;">Creating simple and user-friendly interfaces.</span>
+                    </div>
+
+                    <div class="skill">
+                        <strong>Web Development</strong>
+                        <span style="color: #000; font-size: 18px;">Building complete beginner-friendly web experiences.</span>
+                    </div>
+
+                    <div class="skill">
+                        <strong>Digital Creativity</strong>
+                        <span style="color: #000; font-size: 18px;">Turning ideas into useful digital projects.</span>
+                    </div>
+
+                    <div class="skill">
+                        <strong>Continuous Learning</strong>
+                        <span style="color: #000; font-size: 18px;">Learning new technologies through practice.</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+         PROJECT
+    ========================= -->
+
+        <section class="developer-section">
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    My Projects
+                </h2>
+
+                <div class="project-box">
+
+                    <h3 style="color: #007bff;">Codeskul Computer Studies</h3>
+
+                    <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                        One of my major projects is Codeskul Computer Studies,
+                        an educational website designed to make computer studies
+                        easier to understand through simple explanations,
+                        practical activities, interactive examples and
+                        student-friendly learning materials.
+                    </p>
+
+                    <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                        I am continuing to improve the platform as I learn more
+                        about web development and educational technology.
+                    </p>
+<br>
+                    <div class="project-tags" style="color: white; font-family: 'Segoe UI', sans-serif; ">
+
+                        <span style="background: #007bff;font-size: 18px;">Education</span>
+                        <span style="background: #007bff; font-size: 18px;">Web Development</span>
+                        <span style="background: #007bff; font-size: 18px;">Computer Studies</span>
+                        <span style="background: #007bff; font-size: 18px;">HTML</span>
+                        <span style="background: #007bff; font-size: 18px;">CSS</span>
+                        <span style="background: #007bff; font-size: 18px;">JavaScript</span>
+                        <span style="background: #007bff; font-size: 18px;">Innovation</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+         BOSS / FOUNDER
+    ========================= -->
+
+        <section class="developer-section">
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    A Special Appreciation
+                </h2>
+
+                <div class="mentor-box">
+
+                    <h3>
+                        Mr. Alie Kalokoh
+                    </h3>
+
+                    <p>
+                        <span class="mentor-name">
+                            Founder of Codeskul
+                        </span>
+                    </p>
+
+                    <p style="font-family: 'Segoe UI', sans-serif;">
+                        I would also like to recognise and appreciate
+                        <strong>Mr. Alie Kalokoh, the founder of Codeskul</strong>,
+                        whose vision and initiative helped create the foundation
+                        behind the Codeskul platform.
+                    </p>
+<br>
+                    <p style="font-family: 'Segoe UI', sans-serif;">
+                        His work and commitment to building an educational
+                        environment around technology have contributed to the
+                        ideas and inspiration behind this platform.
+                    </p>
+<br>
+                    <p style="font-family: 'Segoe UI', sans-serif;">
+                        Codeskul represents more than a website. It represents
+                        a commitment to learning, sharing knowledge and
+                        encouraging young people to explore the possibilities
+                        of technology.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+         GOALS
+    ========================= -->
+
+        <section class="developer-section">
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    My Goals
+                </h2>
+
+                <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                    My goal is to continue developing my skills in computer
+                    science and technology and eventually become a developer
+                    capable of building useful solutions for real-world
+                    problems.
+                </p>
+<br>
+                <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                    I want to build technology that can be useful in education,
+                    business, agriculture, communication and everyday life.
+                </p>
+<br>
+                <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                    I also hope to encourage other young people to realise that
+                    they can move beyond being technology users and become
+                    technology creators.
+                </p>
+
+            </div>
+
+            <br>
+
+            <img src="./Image/IMG_8730.jpeg" alt="" width="50%" style="align-items: center; border-radius: 15px;  align-items: center; border-radius: 15px; width: 100%; max-width: 900px; height: auto; display: block; margin: 0 auto; ">
+
+        </section>
+
+       
+
+
+
+        <!-- =========================
+         VISION
+    ========================= -->
+
+        <section class="developer-section">
+
+            <div class="section-card">
+
+                <h2 class="section-title">
+                    My Vision
+                </h2>
+
+                <div class="vision-box">
+
+                    <p class="quote" style="color: #007bff;">
+                        “To learn, create and use technology to make a
+                        meaningful difference in the lives of others.”
+                    </p>
+
+                    <br>
+
+                    <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                        I envision a future where young people in Sierra Leone
+                        and across Africa have greater access to digital
+                        knowledge, practical technology skills and opportunities
+                        to turn their ideas into solutions.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+         CONTACT
+    ========================= -->
+
+        <section class="developer-section">
+
+            <div class="section-card" style="text-align:center;">
+
+                <h2 class="section-title">
+                    Connect With Me
+                </h2>
+
+                <p style="color: white; font-size: 18px; font-family: 'Segoe UI', sans-serif;">
+                    Want to learn more about my work or connect with me?
+                    You can find me through the platforms below.
+                </p>
+
+                <div class="social-links" style="font-family: 'Segoe UI', sans-serif;">
+
+                    <!-- REPLACE THESE LINKS WITH YOUR OWN -->
+
+                    <a href="saidukalokoh072@gmail.com" target="_blank">
+                        📧 Email
+                    </a>
+
+                    <a href="#" target="_blank">
+                        Facebook
+                    </a>
+
+                    <a href="#" target="_blank">
+                        WhatsApp
+                    </a>
+
+                    <a href="#" target="_blank">
+                        TikTok
+                    </a>
+
+                    <a href="#" target="_blank">
+                        YouTube
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer class="developer-footer">
+
+        <p>
+            © <span id="year"></span> Codeskul Computer Studies
+        </p>
+
+        <p>
+            Designed and developed by Saidu Kalokoh
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        /* Automatically update the year */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        /* Simple reveal animation */
+
+        const sections =
+            document.querySelectorAll(".developer-section, .profile-card");
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.style.opacity = "1";
+                            entry.target.style.transform = "translateY(0)";
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.08
+                }
+            );
+
+
+        sections.forEach(section => {
+
+            section.style.opacity = "0";
+            section.style.transform = "translateY(20px)";
+            section.style.transition =
+                "opacity 0.7s ease, transform 0.7s ease";
+
+            observer.observe(section);
+
+        });
+
+        function goBack() {
+                window.location.href = "index.html";
+            }
+
+    </script>
+
+</body>
+
+</html>
